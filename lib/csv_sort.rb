@@ -1,5 +1,9 @@
 require "csv_sort/version"
 
 module CsvSort
-  # Your code goes here...
+
+  class Csv  
+    def say_hello 
+      puts "Hello World"
+    end
 end
