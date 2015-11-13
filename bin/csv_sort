@@ -1,6 +1,14 @@
 #! /usr/bin/env ruby
 
 require "csv_sort"
+require "trollop"
 
+# get the csv class in here
 csv = CsvSort::Csv.new
-csv.say_hello
+
+# parse 'em options
+opts = Trollop::options do
+  opt :file, "File to process", :type => String
+end
+
+csv.parse_csv_file(opts[:file]) if opts[:file]

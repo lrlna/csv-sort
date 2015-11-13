@@ -4,12 +4,10 @@ require "smarter_csv"
 module CsvSort
 
   class Csv  
-    def initialize(params)
-      @csv_file = params
-    end
 
-    def parse_csv_file 
+    def parse_csv_file(csv_file)
       @parsed_csv = SmarterCSV.process(@csv_file)
+      puts @parsed_csv
     end
   end
 end
