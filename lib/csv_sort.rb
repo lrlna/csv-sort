@@ -8,11 +8,15 @@ module CsvSort
       # make csv file into an array of hashes
       @parsed_csv = SmarterCSV.process(csv_file)
       valid_attendees = [] 
+      invalid_attendees = []
 
       # check for email validity
       for row in @parsed_csv
-        valid_attendees << is_valid_email(row[:email])
-        puts is_valid_email(row[:email])
+        if is_valid_email(row[:email])
+          valid_attendees << row
+        else 
+          invalid_attendees << row 
+        end 
       end
       
     end
