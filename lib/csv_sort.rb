@@ -1,4 +1,5 @@
 require "csv_sort/version"
+require "json"
 require "phone"
 require "smarter_csv"
 
@@ -20,7 +21,9 @@ module CsvSort
         end 
       end
       
-      format_valid(valid)
+      valid = JSON.pretty_generate(format_valid(valid))
+      valid_filename = File.basename(csv_file, ".csv") + "_valid" + ".json"
+      write_file(valid, valid_filename)
     end
 
     # regex out the email
@@ -28,8 +31,12 @@ module CsvSort
       email =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
     end
 
-    def write_file(rows)
-         
+    # create a file
+    def write_file(json, filename)
+      fname = filename          
+      file_to_be_written = File.open(fname, "w")
+      file_to_be_written.puts json
+      file_to_be_written.close
     end 
 
     def format_invalid(invalid)
@@ -47,7 +54,6 @@ module CsvSort
         row[:phone] = ph_number.format("(%a) %f %l")
       end
 
-      write_file(valid)
     end
 
   end
