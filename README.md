@@ -1,26 +1,27 @@
 # CsvSort
 
-TODO: Write a gem description
+This is an unpublished gem for sorting through csv with email and outputing two different files:
+1. `.json` file with valid email rows 
+2. `.txt` file with invalid email rows 
 
 ## Installation
 
-Add this line to your application's Gemfile:
+This project is currently not on Gem. You can however clone this repo and install thit locally: 
 
-```ruby
-gem 'csv_sort'
 ```
-
-And then execute:
-
-    $ bundle
+git clone https://github.com/lrlna/csv-sort
+```
 
 Or install it yourself as:
 
-    $ gem install csv_sort
+    $ [sudo] gem install csv_sort
 
 ## Usage
 
-TODO: Write usage instructions here
+Use with the necessary csv_file:
+
+    $ csv_sort --file /path/to/file
+
 
 ## Contributing
 
