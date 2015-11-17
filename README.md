@@ -1,6 +1,6 @@
 # CsvSort
 
-This is an unpublished gem for sorting through csv with email and outputing two different files:
+This is an unpublished gem for sorting through csv with emails and outputing two different files:
 
 1. `.json` file with valid email rows 
 2. `.txt` file with invalid email rows 
