@@ -47,10 +47,13 @@ module CsvSort
     end 
 
     def format_invalid(invalid)
-      new_invalid = ""
+      new_invalid = "" 
+      # don't mutate the initial array
       invalid.each do |hash, elem|
-        new_invalid >> hash.map{ |k, v| "#{v}" }.join("-")
+        #flatten hash to array
+        new_invalid << hash.map{ |k, v| "#{v}" }.join("-")
       end
+      return new_invalid
     end
 
     def format_valid(valid)
