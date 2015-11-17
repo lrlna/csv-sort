@@ -21,9 +21,16 @@ module CsvSort
         end 
       end
       
-      valid = JSON.pretty_generate(format_valid(valid))
-      valid_filename = File.basename(csv_file, ".csv") + "_valid" + ".json"
-      write_file(valid, valid_filename)
+      # deal with valid rows
+      #valid = JSON.pretty_generate(format_valid(valid))
+      #valid_filename = File.basename(csv_file, ".csv") + "_valid" + ".json"
+      #write_file(valid, valid_filename)
+
+      # deal with invalid rows
+      invalid = format_invalid(invalid)
+      puts invalid
+      #invalid_filename = File.basename(csv_file, ".csv") + "_invalid" + ".txt"
+      #write_file(invalid, invalid_filename)
     end
 
     # regex out the email
@@ -40,7 +47,10 @@ module CsvSort
     end 
 
     def format_invalid(invalid)
-      write_file(invalid)
+      new_invalid = ""
+      invalid.each do |hash, elem|
+        new_invalid >> hash.map{ |k, v| "#{v}" }.join("-")
+      end
     end
 
     def format_valid(valid)
@@ -57,8 +67,4 @@ module CsvSort
     end
 
   end
-
-  class File_Writer
-
-  end 
 end
